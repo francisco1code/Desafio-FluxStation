@@ -11,4 +11,4 @@ A arquitetura geral foi dividido em 4 camadas:
 
 
 
-![Arquitetura](https://raw.githubusercontent.com/francisco1code/FluxStation/main/image/Micro-servi%C3%A7os-frexco.png)
+![Arquitetura](https://raw.githubusercontent.com/francisco1code/Desafio-FluxStation/main/image/Micro-servi%C3%A7os-frexco.png)

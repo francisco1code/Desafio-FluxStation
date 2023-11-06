@@ -1,0 +1,13 @@
+site_name: Desafio FluxStation
+repo_url: https://github.com/francisco1code/FluxStation
+
+
+theme:
+        name: material
+        language: pt
+        features:
+                - navigation.tabs
+
+nav:
+        - Home: index.md
+        - Arquitetura: arquitetura.md

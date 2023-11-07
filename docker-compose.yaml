@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+
+    db:
+        container_name: postgres
+        image: "postgres" 
+        ports:
+          - 5432:5432
+        env_file:
+          - .env
+        volumes:
+          - postgres_data:/var/lib/postgresql/data 
+        networks:
+          - fluxstation-api
+
+    api:
+        container_name: api
+        depends_on:
+          - db
+        build: ./micro-service/.
+        ports:
+          - 3000:3000
+        volumes:
+          - .:/app
+        networks:
+          - fluxstation-api
+          
+volumes: 
+    postgres_data:
+
+      
+networks:
+  fluxstation-api:

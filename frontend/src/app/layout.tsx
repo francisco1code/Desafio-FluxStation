@@ -2,6 +2,11 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/componets/header'
+import { HistoryInput } from '@/componets/historyInput'
+import { RegisterButton } from '@/componets/register-button'
+import { HistoricButton } from '@/componets/historicButton'
+import { FormImput } from '@/componets/formInput'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +22,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}><Header/>
+      <body className={inter.className}>
+        <Header/>
+        <Link href="/register">Nova Página</Link>
         {children}
       </body>
     </html>

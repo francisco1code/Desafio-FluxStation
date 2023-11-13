@@ -2,6 +2,7 @@
 
 import { styled } from "styled-components"
 import { Saira_Stencil_One } from 'next/font/google'
+import { HistoryInput } from "./historyInput"
 
 interface HeaderProps {
 
@@ -31,7 +32,9 @@ export function Header( props: HeaderProps){
     return (
         <TagHeader>
             <Logo className={sairaLogo.className}> FluxStation </Logo>
-            <div> </div>
+            <div>
+                <HistoryInput placeholder="Buscar por CPF"/>
+            </div>
         </TagHeader>
     )
 }

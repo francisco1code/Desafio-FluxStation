@@ -16,5 +16,7 @@ export class CreateSupplyDto {
 
     @IsNotEmpty()
     price: string;
+
+    createdAt: Date;
 }
 

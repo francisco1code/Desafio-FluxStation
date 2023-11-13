@@ -13,6 +13,23 @@ services:
           - postgres_data:/var/lib/postgresql/data 
         networks:
           - fluxstation-api
+        deploy:
+          resources:
+            limits:
+              cpus: '2'
+              memory: 500M
+            reservations:
+              cpus: '1'
+              memory: 200M
+
+    front:
+        container_name: front-end
+        build: ./frontend/.
+        ports:
+          - 3000:3000
+        networks:
+          - fluxstation-api
+
 
     api:
         container_name: api
@@ -20,11 +37,17 @@ services:
           - db
         build: ./micro-service/.
         ports:
-          - 3000:3000
-        volumes:
-          - .:/app
+          - 5000:3000
         networks:
           - fluxstation-api
+        deploy:
+          resources:
+            limits:
+              cpus: '2'
+              memory: 500M
+            reservations:
+              cpus: '1'
+              memory: 200M
           
 volumes: 
     postgres_data:

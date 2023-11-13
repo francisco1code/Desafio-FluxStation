@@ -3,6 +3,8 @@
 import { styled } from "styled-components"
 import { Saira_Stencil_One } from 'next/font/google'
 import { HistoryInput } from "./historyInput"
+import { HeaderButton } from "./headerButton"
+import { useRouter } from "next/navigation"
 
 interface HeaderProps {
 
@@ -20,20 +22,29 @@ const TagHeader = styled.header`
     padding: 20px 160px;
 `
 
-const Logo = styled.a`
+const Logo = styled.button`
+    display: flex;
     color: var(--logo-color);
     font-weight: 400;
     font-size: 40px;
     line-height: 150%;
+    border: none;
 `
 
 
 export function Header( props: HeaderProps){
+
+    const { push } = useRouter()
+
+    const handleRegisterClick = () => {
+      push("/")
+    };
+
     return (
         <TagHeader>
-            <Logo className={sairaLogo.className}> FluxStation </Logo>
+            <Logo className={sairaLogo.className} onClick={handleRegisterClick}> FluxSupply </Logo>
             <div>
-                <HistoryInput placeholder="Buscar por CPF"/>
+                <HeaderButton/>
             </div>
         </TagHeader>
     )

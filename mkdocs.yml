@@ -10,4 +10,7 @@ theme:
 
 nav:
         - Home: index.md
+        - Desafio: desafio.md
         - Arquitetura: arquitetura.md
+        - Backend: backend.md
+        - Frontend: frontend.md

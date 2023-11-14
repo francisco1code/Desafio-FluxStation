@@ -1,8 +1,12 @@
-"use client"
+"use client";
 
-import TransactionList from '@/componets/transactionList';
-import React from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from 'react';
+
+import { productHistoric } from '@/services/productHistoric';
+import TransactionList from '@/app/historic/components/TransactionList';
+import Button from '@/components/Button';
+
+import Styled from './styles';
 
 interface Transaction {
   id: number;
@@ -14,60 +18,42 @@ interface Transaction {
   createdAt: string;
 }
 
-const TransactionItem = styled.div`
-  padding: 10px;
-`;
-
-const BackButton = styled.button`
-  width: 50px;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  
-
-`;
-
-const a = [
-    {
-        "id": 1,
-        "driver": "francis",
-        "cpf": "5",
-        "type": "zé",
-        "amount": "20litros",
-        "price": "25.30",
-        "createdAt": "2023-11-13T19:42:07.582Z"
-    },
-    {
-        "id": 2,
-        "driver": "francis",
-        "cpf": "5",
-        "type": "zé",
-        "amount": "20litros",
-        "price": "25.30",
-        "createdAt": "2023-11-13T19:42:08.778Z"
-    }
-]
-
-const modifiedTransactions: Transaction[] = a.map((transaction: Transaction) => ({
-    ...transaction,
-    createdAt: new Date(transaction.createdAt).toLocaleDateString('pt-BR', {
-      day: '2-digit',
-      month: '2-digit',
-      year: '2-digit'
-    }),
-  }));
-
-
-const transactions: Transaction[] = modifiedTransactions;
-
 const HomePage: React.FC = () => {
+  const [productlist, updateProductList] = useState([]);
+  
+  const loadAllProducts = async () => {
+    try {
+      const result = await productHistoric.getProducts();
+      updateProductList(result.data.results);
+    } catch (error) {
+      console.log(`${error}`);
+    }
+  };
+
+  useEffect(() => {
+    loadAllProducts();
+  }, []);
+
+  const modifiedTransactions: Transaction[] = productlist.map((transaction: Transaction) => ({
+      ...transaction,
+      createdAt: new Date(transaction.createdAt).toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: '2-digit'
+      }),
+    }));
+  
+  
+  const transactions: Transaction[] = modifiedTransactions;
+  
   return (
-    <div>
-      <TransactionItem> Lista de Transações  </TransactionItem>
-      <BackButton> Voltar</BackButton>
+    <Styled.WrapHistoric>
+      <Styled.HistoricHeader>
+        <Button redirect='/'>Voltar</Button>
+        <Styled.TransactionItem>Lista de Transações</Styled.TransactionItem>
+      </Styled.HistoricHeader>
       <TransactionList transactions={transactions} />
- 
-    </div>
+    </Styled.WrapHistoric>
   );
 };
 

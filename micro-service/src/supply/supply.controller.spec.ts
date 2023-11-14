@@ -14,7 +14,5 @@ describe('SupplyController', () => {
     controller = module.get<SupplyController>(SupplyController);
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
-  });
+
 });

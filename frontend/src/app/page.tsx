@@ -1,4 +1,6 @@
-import { MenuButton } from '@/componets/menu-button'
+"use client";
+
+import { MenuButton } from '@/app/components/MenuButton'
 import styles from './page.module.css'
 
 export default function Home() {

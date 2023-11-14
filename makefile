@@ -1,12 +1,8 @@
-dkc := "docker-compose.yml"
+dkc := "docker-compose.yaml"
 
 up: 
 
-	docker-compose -f ${dkc} build
-	docker-compose -f ${dkc} up
-
-build:
-	docker-compose -f ${dkc} build
+	docker-compose -f ${dkc} up --build
 
 
 clean:

@@ -7,10 +7,6 @@
 
 ## Primeira maneira de execultar:
 
-### `make build`
-
-Construir Imagens dockers da aplicação.
-
 ### `make up`
 
 Criar e subir todos os Containeres
@@ -18,3 +14,7 @@ Criar e subir todos os Containeres
 ### `make clean`
 
 Limpa todo seu ambiente
+
+## Segunda maneira
+
+### `docker-compose up --build`
